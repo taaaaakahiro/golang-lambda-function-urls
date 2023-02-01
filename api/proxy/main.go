@@ -48,6 +48,7 @@ func handler(ctx context.Context, request events.APIGatewayProxyRequest) (events
 	signer := v4.NewSigner(credential)
 	signer.Sign(req, nil, "lambda", "ap-northeast-1", time.Now())
 
+	//リクエスト実行
 	resp, err := client.Do(req)
 	if err != nil {
 		jsonBytes, _ := json.Marshal(responseBody{
